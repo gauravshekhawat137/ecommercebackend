@@ -13,13 +13,16 @@ public class Product {
     private long id;
 
     @Column(nullable = false, length = 128)
-    private String name;
+    private String title;
 
     @Column(nullable = false, length = 4000)
     private String description;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private double price;
+
+    @Column(nullable = false, length = 128)
+    private String category;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -33,14 +36,15 @@ public class Product {
     public Product () {
     }
 
-    public Product (String name, String description, double price) {
-        this.name = name;
+    public Product (String title, String description, String category, double price) {
+        this.title = title;
         this.description = description;
+        this.category = category;
         this.price = price;
     }
 
-    public Product (String name, String description, double price, byte[]image) {
-        this.name = name;
+    public Product (String title, String description, double price, byte[]image) {
+        this.title = title;
         this.description = description;
         this.price = price;
         this.image = image;
@@ -54,12 +58,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public String getDescription() {
@@ -68,6 +72,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public double getPrice() {
